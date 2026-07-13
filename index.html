@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evelyn Zhong — Tailored Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=Space+Mono:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --fabric: #faf9f6;
+    --fabric-line: #e8e6df;
+    --ink: #171512;
+    --thread: #a13a2d;   /* spool-red thread */
+    --thread-soft: #c98f7d;
+    --pin: #b9a25a;      /* brass pin */
+    --muted: #6b675f;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--fabric);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--thread); color:var(--fabric);}
+
+  /* ---------- typography ---------- */
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--thread);
+  }
+  .measure{
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    color:var(--muted);
+  }
+
+  /* ---------- stitch line svg layer ---------- */
+  .stitch-layer{
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:0;
+  }
+  .stitch-path{
+    fill:none;
+    stroke:var(--ink);
+    stroke-width:2;
+    stroke-dasharray:1 11;
+    stroke-linecap:round;
+    stroke-dashoffset:2000;
+    animation: draw 3.5s ease forwards;
+  }
+  @keyframes draw{
+    to{ stroke-dashoffset:0; }
+  }
+  .needle{
+    transform-origin:center;
+  }
+
+  header{
+    position:relative;
+    padding:7rem 6vw 5rem;
+    min-height:70vh;
+    display:flex;
+    align-items:center;
+  }
+  .hero-content{ position:relative; z-index:2; max-width:640px;}
+  .hero-content h1{
+    font-size:clamp(2.6rem, 6vw, 4.6rem);
+    line-height:1.02;
+  }
+  .hero-content .accent-word{
+    font-style:italic;
+    color:var(--thread);
+  }
+  .hero-sub{
+    margin-top:1.4rem;
+    font-size:1.05rem;
+    color:var(--muted);
+    max-width:36ch;
+    line-height:1.6;
+  }
+  .tag-strip{
+    margin-top:2.4rem;
+    display:flex;
+    gap:0.6rem;
+    flex-wrap:wrap;
+  }
+  .tag{
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.05em;
+    padding:0.35rem 0.7rem;
+    border:1px dashed var(--ink);
+    border-radius:100px;
+    color:var(--ink);
+  }
+
+  /* ---------- section shell ---------- */
+  section{
+    position:relative;
+    padding:5rem 6vw;
+  }
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    border-bottom:1px solid var(--fabric-line);
+    padding-bottom:1.2rem;
+    margin-bottom:3rem;
+  }
+  .section-head h2{ font-size:clamp(1.6rem, 3vw, 2.2rem); }
+
+  /* ---------- project "swatches" ---------- */
+  .projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+    gap:2.5rem;
+    position:relative;
+    z-index:2;
+  }
+  .swatch{
+    background:#fff;
+    border:1px solid var(--fabric-line);
+    border-radius:2px;
+    padding:2rem 1.8rem 1.8rem;
+    position:relative;
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .swatch:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 40px -22px rgba(23,21,18,0.35);
+  }
+  .swatch::before{
+    content:"";
+    position:absolute;
+    top:14px; left:14px; right:14px; bottom:14px;
+    border:1px dashed #d8d5cc;
+    pointer-events:none;
+  }
+  .swatch .pin{
+    position:absolute;
+    top:-9px; left:1.8rem;
+    width:16px; height:16px;
+    border-radius:50%;
+    background:var(--pin);
+    box-shadow: 0 2px 3px rgba(0,0,0,0.25);
+  }
+  .swatch .pin::after{
+    content:"";
+    position:absolute;
+    top:-14px; left:50%;
+    width:1.5px; height:16px;
+    background:var(--pin);
+    transform:translateX(-50%);
+  }
+  .swatch .measure{ display:block; margin-bottom:0.6rem;}
+  .swatch h3{ font-size:1.25rem; margin-bottom:0.7rem; }
+  .swatch p{
+    font-size:0.92rem;
+    line-height:1.6;
+    color:var(--muted);
+    margin:0 0 1.2rem;
+  }
+  .swatch a{
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px solid var(--thread);
+    padding-bottom:2px;
+  }
+
+  /* ---------- about ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:3rem;
+    align-items:start;
+  }
+  @media (max-width:800px){ .about-grid{ grid-template-columns:1fr; } }
+  .about-grid p{
+    font-size:1.05rem;
+    line-height:1.75;
+    color:#3a3833;
+    margin:0 0 1.2rem;
+  }
+  .stat-list{
+    display:flex;
+    flex-direction:column;
+    gap:1.4rem;
+    border-left:1px dashed var(--ink);
+    padding-left:1.6rem;
+  }
+  .stat-list .num{
+    font-family:'Fraunces', serif;
+    font-size:1.6rem;
+    color:var(--thread);
+  }
+  .stat-list .label{ font-size:0.85rem; color:var(--muted); }
+
+  /* ---------- footer ---------- */
+  footer{
+    padding:5rem 6vw 4rem;
+    border-top:1px solid var(--fabric-line);
+    position:relative;
+  }
+  footer h2{ font-size:clamp(2rem, 5vw, 3rem); max-width:16ch; }
+  .contact-row{
+    margin-top:2.2rem;
+    display:flex;
+    gap:2.2rem;
+    flex-wrap:wrap;
+  }
+  .contact-row a{
+    font-family:'Space Mono', monospace;
+    font-size:0.85rem;
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px dashed var(--muted);
+    padding-bottom:2px;
+  }
+  .fine{
+    margin-top:3rem;
+    font-family:'Space Mono', monospace;
+    font-size:0.68rem;
+    color:var(--muted);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .stitch-path{ animation:none; stroke-dashoffset:0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <svg class="stitch-layer" viewBox="0 0 1000 700" preserveAspectRatio="none">
+    <path class="stitch-path" d="M 150 140 C 320 60, 380 240, 560 150 S 900 50, 1020 160"/>
+    <!-- big needle stabbing in at top left, tip pierces the start of the stitch -->
+    <polygon points="17.83,22.35 124.43,120.77 150,140 128.77,116.07 22.17,17.65" fill="#171512"/>
+    <ellipse cx="43.4" cy="41.6" rx="5.2" ry="1.6" fill="#faf9f6" stroke="#171512" stroke-width="1.2" transform="rotate(42.7 43.4 41.6)"/>
+    <!-- loose thread trailing out of the eye -->
+    <path d="M 43.4 41.6 C 34 24, 10 28, 8 10 C 6 -6, 22 -14, 36 -6" fill="none" stroke="#a13a2d" stroke-width="1.4" stroke-linecap="round"/>
+    <path d="M 36 -6 L 42 -14 M 36 -6 L 28 -16" fill="none" stroke="#a13a2d" stroke-width="1" stroke-linecap="round"/>
+    <!-- needle at end -->
+    <polygon points="999.44,153.71 1029.87,163.60 1038.04,164.36 1030.99,160.18 1000.56,150.29" fill="#171512"/>
+    <ellipse cx="1006.85" cy="154.22" rx="2.6" ry="0.9" fill="#faf9f6" stroke="#171512" stroke-width="0.8" transform="rotate(18 1006.85 154.22)"/>
+  </svg>
+
+  <div class="hero-content">
+    <p class="eyebrow">Evelyn Zhong — Urban Spatial Analytics</p>
+    <h1>Tailored solutions,<br><span class="accent-word">developed</span> for community.</h1>
+    <p class="hero-sub">
+      I cut spatial data down to the shape of a place, then sew it back together
+      with the people who live there. GIS, transportation planning, and
+      participatory research — fitted, not off the rack.
+    </p>
+    <div class="tag-strip">
+      <span class="tag">GIS · Python · QGIS</span>
+      <span class="tag">Transportation Equity</span>
+      <span class="tag">Community Storytelling</span>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="section-head">
+    <h2>The pattern</h2>
+    <span class="measure">01 / measurements taken</span>
+  </div>
+  <div class="about-grid">
+    <div>
+      <p>
+        Every neighborhood is measured differently — its streets, its risk, its
+        history. My work starts by taking those measurements seriously: walking
+        the block, reading the parcel data, sitting with the people who'll
+        actually wear the outcome.
+      </p>
+      <p>
+        From there it's pattern-making — buffers, indicators, equity overlays —
+        cut to fit the specific shape of a specific place, rather than draped
+        over it like a generic template.
+      </p>
+    </div>
+    <div class="stat-list">
+      <div><div class="num">155+</div><div class="label">built environment indicators mapped per study participant</div></div>
+      <div><div class="num">3</div><div class="label">cities threaded together — LA, Melbourne, Hong Kong</div></div>
+      <div><div class="num">1</div><div class="label">Best in Show StoryMap, SCAG Regional Conference</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="work" style="background:#fff;">
+  <svg class="stitch-layer" viewBox="0 0 1000 900" preserveAspectRatio="none" style="opacity:0.5;">
+    <path class="stitch-path" style="animation-delay:0.3s;" d="M -20 40 C 260 140, 420 -20, 640 90 S 960 30, 1030 130"/>
+  </svg>
+  <div class="section-head">
+    <h2>Garments in progress</h2>
+    <span class="measure">02 / current work</span>
+  </div>
+  <div class="projects">
+
+    <article class="swatch">
+      <span class="pin"></span>
+      <span class="measure">seam 01 — LA</span>
+      <h3>Reporting in the Dark</h3>
+      <p>
+        A streetlight equity StoryMap tracing where outage complaints go
+        unanswered, and who's left in the dark because of it.
+      </p>
+      <a href="#">view the seam →</a>
+    </article>
+
+    <article class="swatch">
+      <span class="pin"></span>
+      <span class="measure">seam 02 — LA</span>
+      <h3>Willowbrook StoryMap</h3>
+      <p>
+        With LA Commons and Ujima Village residents, mapping soil contamination
+        near the Athens Tank Farm — memory and measurement, stitched together.
+      </p>
+      <a href="#">view the seam →</a>
+    </article>
+
+    <article class="swatch">
+      <span class="pin"></span>
+      <span class="measure">seam 03 — Melbourne / HK</span>
+      <h3>Healthy Ageing & Urban Spaces</h3>
+      <p>
+        Built-environment indicator pipelines across Melbourne and Hong Kong,
+        cut to a common pattern so ageing bodies and city blocks can be compared.
+      </p>
+      <a href="#">view the seam →</a>
+    </article>
+
+    <article class="swatch">
+      <span class="pin"></span>
+      <span class="measure">seam 04 — LA</span>
+      <h3>Crosswalk Spacing Study</h3>
+      <p>
+        With Streets for All, measuring the real distance between marked
+        crossings — where the pattern of the street stops fitting the pedestrian.
+      </p>
+      <a href="#">view the seam →</a>
+    </article>
+
+  </div>
+</section>
+
+<footer id="contact">
+  <span class="eyebrow">03 / finishing touches</span>
+  <h2>Have a place that needs its own pattern cut?</h2>
+  <div class="contact-row">
+    <a href="mailto:you@example.com">you@example.com</a>
+    <a href="#">LinkedIn</a>
+    <a href="#">GitHub</a>
+  </div>
+  <p class="fine">Cut and sewn in San Diego / Philadelphia. © 2026.</p>
+</footer>
+
+</body>
+</html>
