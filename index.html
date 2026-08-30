@@ -115,7 +115,10 @@
     margin-top:1.4rem; max-width:540px; font-size:1.08rem; color:var(--text); line-height:1.7;
   }
   .hero-photo{
-    width:420px; aspect-ratio:4/5; flex-shrink:0; border-radius:4px;
+    width:420px; max-width:100%; flex-shrink:0; border-radius:4px; display:block;
+  }
+  .hero-photo-placeholder{
+    aspect-ratio:5/6;
     background:linear-gradient(160deg, var(--petal), #fff);
     border:1.5px dashed rgba(7,52,66,0.3);
     display:flex; align-items:center; justify-content:center; text-align:center;
@@ -330,7 +333,7 @@
         <article class="work-card">
           <span class="card-kind">StoryMap</span>
           <h3>Reporting from the Dark</h3>
-          <p>Analyzing streetlight infrastructure equity across Los Angeles through 311 service request data.</p>
+          <p>Analyzing streetlight infrastructure equity across Los Angeles through 311 service request data. Presented to policymakers and planners from across the nation, and awarded Best in Show at the SCAG 2026 Regional Conference. </p>
           <span class="card-meta">311 DATA · INFRASTRUCTURE EQUITY · SPATIAL ANALYSIS</span>
           <a class="card-link" href="https://storymaps.arcgis.com/stories/8acf22d222cd4dfbb4df3e62d7d9bd03" target="_blank" rel="noopener">View StoryMap →</a>
         </article>
