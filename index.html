@@ -356,24 +356,20 @@
         </article>
 
       </div>
-    </div>
 
-  <div class="interactive-map">
-    <span class="card-kind">Interactive Map</span>
-    <h3>Recommended Park Sites for Los Angeles River Revitlization</h3>
-    <p>Site suitability analysis identifying candidate park locations within a half-mile of the LA River, weighing demographics and vehicle access against terrain constraints and existing park coverage.</p>
- <!-- Add script to the <head> of your page to load the embeddable map component -->
-    <script type="module" src="https://js.arcgis.com/5.1/embeddable-components/"></script>
-<!-- Add custom element to <body> of your page -->
-     <arcgis-embedded-map style="height:600px;width:700px;margin:0 auto;display:block;" item-id="ecb583bd16d44bfdab51f4bcb93c60c8" theme="dark" heading-enabled legend-enabled information-enabled share-enabled time-zone-label-enabled center="-118.28227459053561,34.06714440753164"scale="144447.638572" portal-url="https://www.arcgis.com"></arcgis-embedded-map>
-  </div>
-
-  <div class="process-diagram">
-    <span class="card-kind">Research</span>
-    <h3>HAUS: Healthy Ageing &amp; Urban Spaces</h3>
-    <p>GIS indicator pipelines for an international aging and urban spaces study spanning Melbourne and Hong Kong. Findings are unpublished pending release — what is shown here is the analytical workflow.</p>
-      <div class="diagram-frame">
-        <svg viewBox="0 0 900 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GIS overlay diagram: buffer, built environment, greenspace, and integrated indicator layers stacked for the HAUS pipeline">
+      <div class="interactive-map">
+        <span class="card-kind">Interactive Map</span>
+        <h3>LA River Recommended Park Sites</h3>
+        <p>Site suitability analysis identifying candidate park locations within a half-mile of the LA River, weighing demographics and vehicle access against terrain constraints and existing park coverage — part of broader river revitalization efforts.</p>
+        <a class="card-link" href="https://www.arcgis.com/apps/mapviewer/index.html?webmap=ecb583bd16d44bfdab51f4bcb93c60c8" target="_blank" rel="noopener">Open interactive map →</a>
+      </div>
+ 
+      <div class="process-diagram">
+        <span class="card-kind">Research</span>
+        <h3>HAUS: Healthy Ageing &amp; Urban Spaces</h3>
+        <p>GIS indicator pipelines for an international aging-in-place study spanning Melbourne and Hong Kong. Findings are unpublished pending release — shown here is the analytical workflow rather than results.</p>
+        <div class="diagram-frame">
+          <svg viewBox="0 0 900 660" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="GIS overlay diagram: buffer, built environment, greenspace, and integrated indicator layers stacked for the HAUS pipeline">
  
             <!-- connecting arrows, label column -->
             <g stroke="#4a3f35" stroke-width="1.5" opacity="0.55">
@@ -477,7 +473,11 @@
             </g>
           </svg>
         </div>
+        <span class="card-meta">SPATIAL JOINS · BUFFER ANALYSIS · GEOPANDAS</span>
+      </div>
+ 
     </div>
+
   </section>
 
   <section id="writing">
